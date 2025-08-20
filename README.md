@@ -45,14 +45,14 @@ O sistema permite cadastrar, listar, atualizar e excluir veículos, além de for
 ## 🛠️ Tecnologias Utilizadas
 
 ### **Backend**
-- [Kotlin]
-- [Ktor]
-- [Gradle]
+- Kotlin
+- Ktor
+- Gradle
 
 ### **Frontend**
-- [React]
-- [Vite]
-- ]JavaScript (ES6+)]
+- React
+- Vite
+- JavaScript (ES6+)
 
 ---
 
