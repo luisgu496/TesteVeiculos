@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: '/', // Vite proxy redireciona para o backend
+  baseURL: '/', 
   headers: { 'Content-Type': 'application/json' }
 });
 
