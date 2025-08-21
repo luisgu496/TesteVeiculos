@@ -8,6 +8,7 @@ data class Veiculo(
     val veiculo: String,
     val marca: String,
     val ano: Int,
+    val cor: String,
     val descricao: String,
     val vendido: Boolean,
     val created: String,
@@ -19,6 +20,7 @@ data class VeiculoInput(
     val veiculo: String,
     val marca: String,
     val ano: Int,
+    val cor: String,
     val descricao: String,
     val vendido: Boolean
 )
