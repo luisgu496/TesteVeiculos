@@ -14,14 +14,15 @@ class VehicleApiTest {
   }
 
   @Test
-  fun testCreateAndList() = testApplication {
+  fun testCreateListAndFilterByCor() = testApplication {
     application { module() }
     val postRes = client.post("/veiculos") {
       contentType(ContentType.Application.Json)
-      setBody("{\"veiculo\":\"Civic\",\"marca\":\"Honda\",\"ano\":2018,\"descricao\":\"Sedan\",\"vendido\":false}")
+      setBody("{"veiculo":"Civic","marca":"Honda","ano":2018,"cor":"Prata","descricao":"Sedan","vendido":false}")
     }
     assertEquals(HttpStatusCode.Created, postRes.status)
-    val listRes = client.get("/veiculos")
+
+    val listRes = client.get("/veiculos?cor=prata")
     assertEquals(HttpStatusCode.OK, listRes.status)
   }
 }
