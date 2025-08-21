@@ -17,11 +17,13 @@ fun Route.vehicleRoutes() {
             val params = call.request.queryParameters
             val marca = params["marca"]
             val ano = params["ano"]?.toIntOrNull()
+            val cor = params["cor"]
             val base = VehicleRepository.lista.toList()
 
             val filtrado = base.filter {
                 (marca == null || it.marca == marca) &&
-                (ano == null || it.ano == ano)
+                (ano == null || it.ano == ano) &&
+                (cor == null || it.cor.equals(cor, ignoreCase = true))
             }
 
             call.respond(filtrado)
@@ -93,7 +95,7 @@ fun Route.vehicleRoutes() {
         get("/por-decada") {
             val porDecada = VehicleRepository.lista.groupBy {
                 val decada = (it.ano / 10) * 10
-                "Década " + decada
+                "Década $decada"
             }.mapValues { it.value.size }
             call.respond(porDecada)
         }
