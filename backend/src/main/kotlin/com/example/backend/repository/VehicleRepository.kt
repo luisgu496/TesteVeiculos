@@ -19,6 +19,7 @@ object VehicleRepository {
             veiculo = input.veiculo,
             marca = input.marca,
             ano = input.ano,
+            cor = input.cor,
             descricao = input.descricao,
             vendido = input.vendido,
             created = now,
@@ -37,6 +38,7 @@ object VehicleRepository {
             veiculo = input.veiculo,
             marca = input.marca,
             ano = input.ano,
+            cor = input.cor,
             descricao = input.descricao,
             vendido = input.vendido,
             updated = LocalDateTime.now().toString()
@@ -50,13 +52,14 @@ object VehicleRepository {
         if (idx == -1) throw NoSuchElementException("Veículo não encontrado")
         val c = lista[idx]
 
-        val novoMarca = (map["marca"] as? String) ?: c.marca
-        if (novoMarca !in marcasValidas) throw IllegalArgumentException("Marca inválida")
+        val novaMarca = (map["marca"] as? String) ?: c.marca
+        if (novaMarca !in marcasValidas) throw IllegalArgumentException("Marca inválida")
 
         val updated = c.copy(
             veiculo = (map["veiculo"] as? String) ?: c.veiculo,
-            marca = novoMarca,
+            marca = novaMarca,
             ano = when (val a = map["ano"]) { is Number -> a.toInt(); is String -> a.toIntOrNull() ?: c.ano; else -> c.ano },
+            cor = (map["cor"] as? String) ?: c.cor,
             descricao = (map["descricao"] as? String) ?: c.descricao,
             vendido = when (val v = map["vendido"]) { is Boolean -> v; is String -> v.toBooleanStrictOrNull() ?: c.vendido; else -> c.vendido },
             updated = LocalDateTime.now().toString()
