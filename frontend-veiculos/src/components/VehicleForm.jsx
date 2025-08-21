@@ -7,6 +7,7 @@ export default function VehicleForm({ id }) {
     veiculo: '',
     marca: '',
     ano: '',
+    cor: '',
     descricao: '',
     vendido: false
   });
@@ -28,18 +29,20 @@ export default function VehicleForm({ id }) {
   return (
     <div style={{ display: 'grid', gap: 8, maxWidth: 360 }}>
       <input placeholder="Veículo" value={form.veiculo}
-             onChange={e => setForm({ ...form, veiculo: e.target.value })} />
+            onChange={e => setForm({ ...form, veiculo: e.target.value })} />
       <input placeholder="Marca (ex: Honda, Ford...)" value={form.marca}
-             onChange={e => setForm({ ...form, marca: e.target.value })} />
+            onChange={e => setForm({ ...form, marca: e.target.value })} />
       <input placeholder="Ano" type="number" value={form.ano}
-             onChange={e => setForm({ ...form, ano: e.target.value })} />
+            onChange={e => setForm({ ...form, ano: e.target.value })} />
+      <input placeholder="Cor" value={form.cor}
+            onChange={e => setForm({ ...form, cor: e.target.value })} />
       <textarea placeholder="Descrição"
                 value={form.descricao}
                 onChange={e => setForm({ ...form, descricao: e.target.value })} />
       <label>
         Vendido?{" "}
         <input type="checkbox" checked={form.vendido}
-               onChange={e => setForm({ ...form, vendido: e.target.checked })} />
+              onChange={e => setForm({ ...form, vendido: e.target.checked })} />
       </label>
       <div>
         <button onClick={salvar}>Salvar</button>{" "}
